@@ -13,6 +13,10 @@ class Day : Serializable{
         return sessionsSet.size
     }
 
+    fun isEmpty() : Boolean {
+        return sessionsSet.isEmpty()
+    }
+
     fun addSession(newSession : Session) {
         sessionsSet.add(newSession)
     }

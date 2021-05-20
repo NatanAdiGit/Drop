@@ -41,6 +41,7 @@ class ScheduleActivity : AppCompatActivity() {
         var startTime: String= startTimeButton.text.toString()
         var endTime: String = endTimeButton.text.toString()
         var currentDay = "SUNDAY"
+        val adapter = SessionsAdapter()
 
         val schedule = Schedule()
 
@@ -59,36 +60,43 @@ class ScheduleActivity : AppCompatActivity() {
         sundayButton.setOnClickListener() {
             currentDay = "SUNDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         mondayButton.setOnClickListener() {
             currentDay = "MONDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         tuesdayButton.setOnClickListener() {
             currentDay = "TUESDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         wednesdayButton.setOnClickListener() {
             currentDay = "WEDNESDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         thursdayButton.setOnClickListener() {
             currentDay = "THURSDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         fridayButton.setOnClickListener() {
             currentDay = "FRIDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         saturdayButton.setOnClickListener() {
             currentDay = "SATURDAY"
             Log.d("DAYTAG", currentDay)
+            adapter.setItems(schedule.getSessionsFromDay(currentDay))
 
         }
 // --------------------------------------------------------------
@@ -137,7 +145,6 @@ class ScheduleActivity : AppCompatActivity() {
 
 // --------------------------------------------------------------
 
-        val adapter = SessionsAdapter()
         adapter.setItems(schedule.getSessionsFromDay(currentDay))
 
         createSessionButton.setOnClickListener{
@@ -175,10 +182,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         sendScheduleButton.setOnClickListener {
 
-            val scheduleIntent = Intent()
-            scheduleIntent.action = "schedule"
-            scheduleIntent.putExtra("scheduleIntent", schedule)
-            sendBroadcast(scheduleIntent)
+            mainSchedule.setSchedule(schedule)
             finish()
         }
 
