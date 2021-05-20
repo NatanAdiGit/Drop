@@ -6,76 +6,210 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH0"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV0"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV4"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SCHEDULE"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/wednesday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/sunday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Su"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV0"
+        app:layout_constraintStart_toStartOf="@id/guidelineV0"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
 
     <Button
         android:id="@+id/monday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Mo"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toStartOf="@+id/tuesday"
+        app:layout_constraintStart_toEndOf="@+id/sunday"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
 
     <Button
         android:id="@+id/tuesday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Tu"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toStartOf="@+id/wednesday"
+        app:layout_constraintStart_toEndOf="@+id/monday"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
 
     <Button
         android:id="@+id/wednesday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="We"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toStartOf="@+id/thursday"
+        app:layout_constraintStart_toEndOf="@+id/tuesday"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
 
     <Button
         android:id="@+id/thursday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Th"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toStartOf="@+id/friday"
+        app:layout_constraintStart_toEndOf="@+id/wednesday"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
 
     <Button
         android:id="@+id/friday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Fr"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toStartOf="@+id/saturday"
+        app:layout_constraintStart_toEndOf="@+id/thursday"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
+
 
     <Button
         android:id="@+id/saturday"
-        android:layout_width="47dp"
+        android:layout_width="50dp"
         android:layout_height="55dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="337dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Sa"
+        app:layout_constraintBottom_toTopOf="@id/tasks"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
+        app:layout_constraintStart_toStartOf="@id/guidelineV4"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH0" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="358dp"
-        android:layout_height="435dp"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="177dp" />
+        android:id="@+id/tasks"
+        android:layout_width="359dp"
+        android:layout_height="383dp"
+        app:layout_constraintBottom_toTopOf="@+id/newTesk"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineV4"
+        app:layout_constraintStart_toEndOf="@+id/guidelineV0"
+        app:layout_constraintTop_toBottomOf="@+id/wednesday" />
 
     <EditText
-        android:id="@+id/textView"
-        android:layout_width="126dp"
-        android:layout_height="21dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="659dp" />
+        android:id="@+id/newTesk"
+        android:layout_width="357dp"
+        android:layout_height="44dp"
+        android:hint="  Task"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH2" />
 
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start:"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineH3"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV1"
+        app:layout_constraintStart_toStartOf="@id/guidelineV0"
+        app:layout_constraintTop_toBottomOf="@id/newTesk" />
 
+    <Button
+        android:id="@+id/startTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="08:00"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineH3"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV2"
+        app:layout_constraintStart_toStartOf="@id/guidelineV1"
+        app:layout_constraintTop_toBottomOf="@id/newTesk" />
+
+    <TextView
+        android:id="@+id/endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="end:"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineH3"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV3"
+        app:layout_constraintStart_toStartOf="@id/guidelineV2"
+        app:layout_constraintTop_toBottomOf="@id/newTesk" />
+
+    <Button
+        android:id="@+id/endTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="08:45"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineH3"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
+        app:layout_constraintStart_toStartOf="@id/guidelineV3"
+        app:layout_constraintTop_toBottomOf="@id/newTesk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
