@@ -212,7 +212,7 @@
         app:layout_constraintStart_toStartOf="@id/guidelineV3"
         app:layout_constraintTop_toBottomOf="@id/newTask" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewSessionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
