@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#EFEFEF</color>
+
+<!--    pastel colors-->
+
+    <color name="color1_pastel_blue">#CCF1FF</color>
+    <color name="color2_pastel_purple">#E0D7FF</color>
+    <color name="color3_pastel_pink">#FFCCE1</color>
+    <color name="color4_pastel_yellow">#FAFFC7</color>
 </resources>

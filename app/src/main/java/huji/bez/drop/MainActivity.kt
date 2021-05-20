@@ -1,7 +1,9 @@
 package huji.bez.drop
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +18,18 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+        val sced : Button = findViewById(R.id.next_button)
+        val init : Button = findViewById(R.id.init)
+
+        init.setOnClickListener {
+            val intent = Intent(this@MainActivity, DropInitActivity::class.java)
+            startActivity(intent)
+        }
+
+        sced.setOnClickListener {
+            val intent = Intent(this@MainActivity, ScheduleActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
