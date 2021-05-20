@@ -17,8 +17,26 @@ class DroplingSprite
         imageViewDropFeatures.setBackgroundColor(Color.TRANSPARENT)
     }
 
-    fun showHappyState() {
-        Glide.with(parentActivity).load(R.drawable.droplet_test).into(imageViewDropBody)
+    /**** State Switches ****/
+    fun showIdleState() {
+        Glide.with(parentActivity).load(R.drawable.idle_body).into(imageViewDropBody)
+        Glide.with(parentActivity).load(R.drawable.idle_parts).into(imageViewDropFeatures)
+    }
+
+    /**** Movement Controls ****/
+    fun scrollY(value: Int) {
+        imageViewDropBody.scrollY = value
+        imageViewDropFeatures.scrollY = value
+    }
+
+    fun scrollX(value: Int) {
+        imageViewDropBody.scrollX = value
+        imageViewDropFeatures.scrollX = value
+    }
+
+    fun moveBy(x: Int, y: Int) {
+        scrollX(x)
+        scrollY(y)
     }
 
 }

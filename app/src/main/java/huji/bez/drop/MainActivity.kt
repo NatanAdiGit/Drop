@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        val droplingSprite: DroplingSprite = DroplingSprite(this)
+        droplingSprite.showIdleState()
+
         val sced : Button = findViewById(R.id.next_button)
         val init : Button = findViewById(R.id.init)
 
