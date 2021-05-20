@@ -22,8 +22,12 @@ class Day : Serializable{
             ?.setSession(description, newFrom,  newTo)
     }
 
-    public fun removeSession(newSession : Session) {
+    fun removeSession(newSession : Session) {
         sessionsSet.remove(newSession)
+    }
+
+    fun getSet(): TreeSet<Session> {
+        return sessionsSet
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

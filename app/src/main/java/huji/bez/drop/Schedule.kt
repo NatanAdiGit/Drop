@@ -8,13 +8,13 @@ import java.time.LocalDate
 class Schedule : Serializable {
 
     private val daysMap : HashMap<String,Day> = hashMapOf(
-        "SUNDAY" to Day(),
-        "MONDAY" to Day(),
-        "TUESDAY" to Day(),
-        "WEDNESDAY" to Day(),
-        "THURSDAY" to Day(),
-        "FRIDAY" to Day(),
-        "SATURDAY" to Day()
+//        "SUNDAY" to Day(),
+//        "MONDAY" to Day(),
+//        "TUESDAY" to Day(),
+//        "WEDNESDAY" to Day(),
+//        "THURSDAY" to Day(),
+//        "FRIDAY" to Day(),
+//        "SATURDAY" to Day()
     )
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -26,4 +26,13 @@ class Schedule : Serializable {
     fun setDay(dayName : String, day : Day) {
         daysMap[dayName] = day
     }
+
+    fun addSessionToDay(dayName : String, session : Session) {
+        daysMap[dayName]!!.addSession(session)
+    }
+
+    fun removeSessionFromDay(dayName : String, session : Session) {
+        daysMap[dayName]!!.removeSession(session)
+    }
+
 }

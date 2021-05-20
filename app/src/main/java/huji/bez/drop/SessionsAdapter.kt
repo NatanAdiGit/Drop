@@ -11,25 +11,19 @@ import kotlin.collections.HashMap
 
 class SessionsAdapter: RecyclerView.Adapter<sessionItemHolder>() {
 
-    private val sessionsSetsMap: HashMap<String, Day> = hashMapOf(
-        "SUNDAY" to Day(),
-        "MONDAY" to Day(),
-        "TUESDAY" to Day(),
-        "WEDNESDAY" to Day(),
-        "THURSDAY" to Day(),
-        "FRIDAY" to Day(),
-        "SATURDAY" to Day()
-    )
+    private val sessionsSets : TreeSet<Session> = sortedSetOf()
 
-    private lateinit var currentDay : String
+    var onDeleteClickCallback : ((Session) -> Unit)?= null
 
-    fun setCurrentDay(currentDay : String) {
-        this.currentDay = currentDay
 
+    fun setItems(items : TreeSet<Session>) {
+        sessionsSets.clear()
+        sessionsSets.addAll(items)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() : Int {
-        return sessionsSetsMap[currentDay]!!.size()
+        return sessionsSets.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): sessionItemHolder {
@@ -46,12 +40,13 @@ class SessionsAdapter: RecyclerView.Adapter<sessionItemHolder>() {
             LocalTime.parse(holder.startTime.text.toString() + ":00"),
             LocalTime.parse(holder.endTime.text.toString() + ":00")
         )
-        sessionsSetsMap[currentDay]!!.addSession(newSession)
+        sessionsSets.add(newSession)
 
 
         // set the delete button onClick.
         holder.deleteButton.setOnClickListener {
-            sessionsSetsMap[currentDay]!!.removeSession(newSession)
+            val callback = onDeleteClickCallback ?: return@setOnClickListener
+            callback(newSession)
         }
     }
 }
