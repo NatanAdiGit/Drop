@@ -1,6 +1,7 @@
 package huji.bez.drop
 
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,10 @@ class DroplingSprite
     init {
         imageViewDropBody.setBackgroundColor(Color.TRANSPARENT)
         imageViewDropFeatures.setBackgroundColor(Color.TRANSPARENT)
+    }
+    /**** General Parameters ****/
+    fun setBodyColor(color: Int) {
+        imageViewDropBody.setColorFilter(color)
     }
 
     /**** State Switches ****/
