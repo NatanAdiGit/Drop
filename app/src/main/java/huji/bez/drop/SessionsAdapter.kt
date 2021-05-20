@@ -11,7 +11,7 @@ import kotlin.collections.HashMap
 
 class SessionsAdapter: RecyclerView.Adapter<sessionItemHolder>() {
 
-    private val sessionsSets : TreeSet<Session> = sortedSetOf()
+    private val sessionsSets : MutableList<Session> = arrayListOf()
 
     var onDeleteClickCallback : ((Session) -> Unit)?= null
 
@@ -35,14 +35,10 @@ class SessionsAdapter: RecyclerView.Adapter<sessionItemHolder>() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: sessionItemHolder, position: Int) {
-        val newSession: Session = Session(
-            holder.description.text.toString(),
-            LocalTime.parse(holder.startTime.text.toString() + ":00"),
-            LocalTime.parse(holder.endTime.text.toString() + ":00")
-        )
-        sessionsSets.add(newSession)
-
-
+        val newSession = sessionsSets[position]
+        holder.description.text = newSession.description
+        holder.startTime.setText(newSession.startTime.toString())
+        holder.endTime.setText(newSession.endTime.toString())
         // set the delete button onClick.
         holder.deleteButton.setOnClickListener {
             val callback = onDeleteClickCallback ?: return@setOnClickListener
