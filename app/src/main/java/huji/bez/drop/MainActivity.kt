@@ -13,62 +13,61 @@ import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
 
-    private var userInteractionTime : Long = 0;
-    private var isNotFocused = false
+//    private val userData = UserData()
+    private var schedule = Schedule()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        if (mainSchedule.getSchedule().isEmpty()) {
-            val sced: Button = findViewById(R.id.next_button)
-            val init: Button = findViewById(R.id.init)
+        val droplingSprite: DroplingSprite = DroplingSprite(this)
+        droplingSprite.showIdleState()
 
-            init.setOnClickListener {
-                val intent = Intent(this@MainActivity, DropInitActivity::class.java)
-                startActivity(intent)
-            }
+        val sced : Button = findViewById(R.id.next_button)
+        val init : Button = findViewById(R.id.init)
 
-            sced.setOnClickListener {
-                val intent = Intent(this@MainActivity, ScheduleActivity::class.java)
-                startActivity(intent)
-            }
+        init.setOnClickListener {
+            val intent = Intent(this@MainActivity, DropInitActivity::class.java)
+            startActivity(intent)
         }
 
-        val userData = UserData("Keren", "Momo")
+        sced.setOnClickListener {
+            val intent = Intent(this@MainActivity, ScheduleActivity::class.java)
+            startActivity(intent)
+        }
 
-        while (true) {
-
-            onUserInteraction()
-            onUserLeaveHint()
+//        val scheduleIntent = Intent(this@MainActivity, ScheduleActivity::class.java)
+//        startActivity(scheduleIntent)
 
 
+        val broadcastReceiverForSuccess =  object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                if (intent == null || intent.action != "schedule") {
+                    Log.e("schedule_not_received", "schedule was not received")
+                    return
+                }
+                schedule = intent.getSerializableExtra("schedule_object") as Schedule
+            }
 
         }
 
+        registerReceiver(broadcastReceiverForSuccess, IntentFilter("schedule"))
 
-    }
+//        if (!schedule.isEmpty()) {
+//            AlertDialog.Builder(this@MainActivity)
+//                .setTitle("")
+//                .setMessage("NOT NULL")
+//                .setPositiveButton("YES", null)
+//                .setNegativeButton("NO", null)
+//                .show()
+//        }
 
-    override fun onUserInteraction() {
-        userInteractionTime = System.currentTimeMillis();
-        super.onUserInteraction();
-        Log.i("appname", "Interaction"); }
 
-    override fun onUserLeaveHint() {
-        var uiDelta :Long = (System.currentTimeMillis() - userInteractionTime);
-        super.onUserLeaveHint();
+//        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+//        registerReceiver(broadcastReceiverForSuccess, filter)
 
-        isNotFocused = uiDelta < 100 // if under 100 then user pressed homescreen
-    }
 
-object mainSchedule {
-    private var schedule = Schedule()
-
-    fun getSchedule():Schedule {return schedule}
-    fun setSchedule(newSchedule: Schedule) {
-        schedule = newSchedule
     }
 }
