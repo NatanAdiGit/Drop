@@ -223,10 +223,13 @@
 
     <Button
         android:id="@+id/sendSchedule"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next -->"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
+        app:layout_constraintStart_toStartOf="@id/guidelineV3"
+        app:layout_constraintTop_toBottomOf="@id/endTimeButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

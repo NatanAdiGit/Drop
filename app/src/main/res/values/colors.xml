@@ -15,4 +15,13 @@
     <color name="color2_pastel_purple">#E0D7FF</color>
     <color name="color3_pastel_pink">#FFCCE1</color>
     <color name="color4_pastel_yellow">#FAFFC7</color>
+    
+<!--    -->
+    
+    <color name="pastel_green">#C3DFD6</color>
+
+<!--    progress bars colors-->
+    <color name="progress_water">#A0D9D8</color>
+    <color name="progress_heart">#F8AA92</color>
+    <color name="progress_energy">#FDC88E</color>
 </resources>

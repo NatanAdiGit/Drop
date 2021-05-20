@@ -41,8 +41,9 @@ class DropInitActivity : AppCompatActivity() {
         }
 
         nextButton.setOnClickListener {
-            val intent = Intent(this, ScheduleActivity::class.java)
+            val intent = Intent(this@DropInitActivity, ScheduleActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

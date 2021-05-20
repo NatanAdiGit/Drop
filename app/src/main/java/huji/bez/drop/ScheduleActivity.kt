@@ -59,6 +59,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         sundayButton.setOnClickListener() {
             currentDay = "SUNDAY"
+            sundayButton.isPressed = true
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
@@ -183,6 +184,7 @@ class ScheduleActivity : AppCompatActivity() {
         sendScheduleButton.setOnClickListener {
 
             mainSchedule.setSchedule(schedule)
+
             finish()
         }
 

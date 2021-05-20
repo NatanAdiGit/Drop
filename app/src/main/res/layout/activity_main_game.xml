@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomePageActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="663dp"
+        android:layout_height="629dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor2"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/page" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor2" />
+
+    <ImageView
+        android:id="@+id/water_coin"
+        android:layout_width="27dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor2"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVer4"
+        app:layout_constraintStart_toStartOf="@id/guidelineVer4"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1"
+        app:srcCompat="@drawable/water_coin" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor2"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer5"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="days"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer6"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17"
+        tools:layout_editor_absoluteX="269dp"
+        tools:layout_editor_absoluteY="51dp"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer6"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hours"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="51dp" />
+
+    <ImageView
+        android:id="@+id/energy"
+        android:layout_width="30dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/heart"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHor4"
+        app:srcCompat="@drawable/lightning" />
+
+    <ImageView
+        android:id="@+id/heart"
+        android:layout_width="30dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/pot"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintTop_toBottomOf="@id/energy"
+        app:srcCompat="@drawable/heart" />
+
+    <ImageView
+        android:id="@+id/pot"
+        android:layout_width="30dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHor5"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintTop_toBottomOf="@+id/heart"
+        app:srcCompat="@drawable/water_pot" />
+
+    <ProgressBar
+        android:id="@+id/progressBarEnergy"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:progress="40"
+        android:progressTint="@color/progress_energy"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarHeart"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer4"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHor4" />
+
+    <ProgressBar
+        android:id="@+id/progressBarHeart"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:progress="44"
+        android:progressTint="@color/progress_heart"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarWater"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer4"
+        app:layout_constraintTop_toBottomOf="@id/progressBarEnergy" />
+
+    <ProgressBar
+        android:id="@+id/progressBarWater"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:progress="40"
+        android:progressTint="@color/progress_water"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHor5"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer2"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer4"
+        app:layout_constraintTop_toBottomOf="@id/progressBarHeart" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor4"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineVer3"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer3"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHor3"
+        app:srcCompat="@drawable/avatar_color1" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="115dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor3"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVer3"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHor3"
+        app:srcCompat="@drawable/want_heart" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
