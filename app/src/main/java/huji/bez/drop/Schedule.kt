@@ -24,9 +24,14 @@ class Schedule : Serializable {
         val currentDay : String = LocalDate.now().dayOfWeek.toString()
         return daysMap[currentDay]?.isBlocking()
     }
+
     fun isEmpty() : Boolean {
-        return daysMap.isEmpty()
+        for ((key, value) in daysMap)
+            if (!value.isEmpty())
+                return false
+        return true
     }
+    
     fun setDay(dayName : String, day : Day) {
         daysMap[dayName] = day
     }
