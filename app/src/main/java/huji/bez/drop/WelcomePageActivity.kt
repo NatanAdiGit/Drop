@@ -13,8 +13,8 @@ class WelcomePageActivity : AppCompatActivity() {
         val start: Button = findViewById(R.id.start)
 
         start.setOnClickListener {
-//            val intent = Intent(this@WelcomePageActivity, DropInitActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(this@WelcomePageActivity, DropInitActivity::class.java)
+            startActivity(intent)
             finish()
         }
     }
