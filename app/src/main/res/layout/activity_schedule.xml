@@ -168,7 +168,7 @@
         android:layout_height="44dp"
         android:hint=""
         app:layout_constraintBottom_toTopOf="@+id/startTimeButton"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addNewSessionButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guidelineH3" />
 
@@ -206,11 +206,10 @@
         android:id="@+id/endTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="08:45"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineH4"
-        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
-        app:layout_constraintStart_toStartOf="@id/guidelineV3"
-        app:layout_constraintTop_toBottomOf="@id/newTask" />
+        app:layout_constraintBottom_toTopOf="@+id/startTimeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/newTask"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH3" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewSessionButton"
@@ -228,8 +227,8 @@
         android:id="@+id/sendSchedule"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

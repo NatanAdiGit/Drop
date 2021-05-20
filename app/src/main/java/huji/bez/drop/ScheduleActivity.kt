@@ -2,7 +2,10 @@ package huji.bez.drop
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,105 +15,120 @@ import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.util.*
 
 class ScheduleActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
-    var mDateSetListener: DatePickerDialog.OnDateSetListener? = null
+
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        val createSessionButton: FloatingActionButton = findViewById(R.id.addNewSessionButton)
+        val editSessionView: EditText = findViewById(R.id.newTask)
+        val endTimeButton: Button = findViewById(R.id.endTimeButton)
+        val startTimeButton: Button = findViewById(R.id.startTimeButton)
+        val sendScheduleButton : Button = findViewById(R.id.sendSchedule)
+
+        var startTime: String= startTimeButton.text.toString()
+        var endTime: String = endTimeButton.text.toString()
         var currentDay = "SUNDAY"
 
         val schedule = Schedule()
 
         val itemsRecycler: RecyclerView = findViewById(R.id.tasks)
-        val createSessionButton : FloatingActionButton = findViewById(R.id.addNewSessionButton)
-        val editSessionView : EditText = findViewById(R.id.newTask)
-        val startTimeButton : Button = findViewById(R.id.startTimeButton)
-        val endTimeButton : Button = findViewById(R.id.endTimeButton)
-        val sendScheduleButton : Button = findViewById(R.id.sendSchedule)
 
-        var startTime = "12:00"
-        var endTime = "13:00"
+// --------------------------------------------------------------
 
-//        var timeSetListener :  OnTimeSetListener? = null
-//
-//        startTimeButton.setOnClickListener(View.OnClickListener {
-//            val cal: Calendar = Calendar.getInstance()
-//            val hour: Int = cal.get(Calendar.HOUR_OF_DAY)
-//            val minutes: Int = cal.get(Calendar.MINUTE)
-//            Log.d("TIMETAG", "onDateSet: dd/mm/yyy: $hour:$minutes")
-//            val dialog = TimePickerDialog(
-//                this@ScheduleActivity,
-//                0, timeSetListener,
-//                hour, minutes, false
-//            )
-//            dialog.show()
-//        })
-//
-//        timeSetListener = OnTimeSetListener { timePicker, hour, minute ->
-//            Log.d("TIMETAG", "onDateSet: dd/mm/yyy: $hour:$minute")
-//
-//            val time = "$hour:$minute"
-//            startTimeButton.text = time
-////        }
-//
-//        var timeSetListener :  TimePickerDialog.OnTimeSetListener? = null
-//
-//        startTimeButton.setOnClickListener(View.OnClickListener {
-//            val cal: Calendar = Calendar.getInstance()
-//            val year: Int = cal.get(Calendar.YEAR)
-//            val month: Int = cal.get(Calendar.MONTH)
-//            val day: Int = cal.get(Calendar.DAY_OF_MONTH)
-//            val dialog = DatePickerDialog(
-//                this@ScheduleActivity,
-//                0,
-//                mDateSetListener,
-//                year, month, day
-//            )
-////            val dialog = DatePickerDialog(theme=)
-////            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-////            dialog.window!!.setContentView(ColorDrawable(Color.TRANSPARENT))
-//            dialog.show()
-//        })
-//        mDateSetListener =
-//            DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
-//                var month = month
-//                month += 1
-//                Log.d("TIMETAG", "onDateSet: dd/mm/yyy: $day/$month/$year")
-//                val date = "$day/$month/$year"
-//                startTimeButton.text = date
-//            }
+        val sundayButton: Button = findViewById(R.id.sunday)
+        val mondayButton: Button = findViewById(R.id.monday)
+        val tuesdayButton: Button = findViewById(R.id.tuesday)
+        val wednesdayButton: Button = findViewById(R.id.wednesday)
+        val thursdayButton: Button = findViewById(R.id.thursday)
+        val fridayButton: Button = findViewById(R.id.friday)
+        val saturdayButton: Button = findViewById(R.id.saturday)
 
-
-/*
-        mDateSetListener =
-            OnDateSetListener { datePicker, year, month, day ->
-                var month = month
-                month += 1
-                Log.d(TAG, "onDateSet: dd/mm/yyy: $day/$month/$year")
-                val date = "$day/$month/$year"
-                mDisplayDate!!.text = date
-            }
- */
-        //todo : HH:MM
-
-        startTimeButton.setOnClickListener {
-
+        sundayButton.setOnClickListener() {
+            currentDay = "SUNDAY"
         }
 
-        endTimeButton.setOnClickListener {
-
+        mondayButton.setOnClickListener() {
+            currentDay = "MONDAY"
         }
+
+        tuesdayButton.setOnClickListener() {
+            currentDay = "TUESDAY"
+        }
+
+        wednesdayButton.setOnClickListener() {
+            currentDay = "WEDNESDAY"
+        }
+
+        thursdayButton.setOnClickListener() {
+            currentDay = "THURSDAY"
+        }
+
+        fridayButton.setOnClickListener() {
+            currentDay = "FRIDAY"
+        }
+
+        saturdayButton.setOnClickListener() {
+            currentDay = "SATURDAY"
+        }
+// --------------------------------------------------------------
+
+        val startTimeSetListener: OnTimeSetListener = OnTimeSetListener { timePicker, hour, minute ->
+            val f24 : SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val date: Date = f24.parse("$hour:$minute")
+            Log.d("TIMETAG", "onDateSet: dd/mm/yyy: ${f24.format(date)}")
+            startTime = f24.format(date)
+            startTimeButton.text = startTime
+        }
+
+        startTimeButton.setOnClickListener(View.OnClickListener {
+            val cal: Calendar = Calendar.getInstance()
+            val hour: Int = cal.get(Calendar.HOUR_OF_DAY)
+            val minutes: Int = cal.get(Calendar.MINUTE)
+            val dialog = TimePickerDialog(
+                this@ScheduleActivity,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth, startTimeSetListener,
+                hour, minutes, true
+            )
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+        })
+
+        val endTimeSetListener: OnTimeSetListener = OnTimeSetListener { timePicker, hour, minute ->
+            val f24 : SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val date: Date = f24.parse("$hour:$minute")
+            Log.d("TIMETAG", "onDateSet: dd/mm/yyy: ${f24.format(date)}")
+            endTime = f24.format(date)
+            endTimeButton.text = endTime
+        }
+
+        endTimeButton.setOnClickListener(View.OnClickListener {
+            val cal: Calendar = Calendar.getInstance()
+            val hour: Int = cal.get(Calendar.HOUR_OF_DAY)
+            val minutes: Int = cal.get(Calendar.MINUTE)
+            val dialog = TimePickerDialog(
+                this@ScheduleActivity,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth, endTimeSetListener,
+                hour, minutes, true
+            )
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+        })
+
+// --------------------------------------------------------------
 
         val adapter = SessionsAdapter()
         adapter.setItems(schedule.getSessionsFromDay(currentDay))
