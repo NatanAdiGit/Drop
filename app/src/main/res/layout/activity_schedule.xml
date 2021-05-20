@@ -206,22 +206,20 @@
         android:id="@+id/endTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/startTimeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/newTask"
-        app:layout_constraintTop_toBottomOf="@id/guidelineH3" />
+        android:text="08:45"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineH4"
+        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
+        app:layout_constraintStart_toStartOf="@id/guidelineV3"
+        app:layout_constraintTop_toBottomOf="@id/newTask" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewSessionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="8888888888888888888"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineH4"
-        app:layout_constraintEnd_toEndOf="@id/guidelineV4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guidelineV3"
-        app:layout_constraintTop_toBottomOf="@id/newTask"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/startTimeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/newTask"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH3" />
 
     <Button
         android:id="@+id/sendSchedule"

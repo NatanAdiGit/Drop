@@ -31,7 +31,6 @@ class ScheduleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val createSessionButton: FloatingActionButton = findViewById(R.id.addNewSessionButton)
         val editSessionView: EditText = findViewById(R.id.newTask)
@@ -59,30 +58,38 @@ class ScheduleActivity : AppCompatActivity() {
 
         sundayButton.setOnClickListener() {
             currentDay = "SUNDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         mondayButton.setOnClickListener() {
             currentDay = "MONDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         tuesdayButton.setOnClickListener() {
             currentDay = "TUESDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         wednesdayButton.setOnClickListener() {
             currentDay = "WEDNESDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         thursdayButton.setOnClickListener() {
             currentDay = "THURSDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         fridayButton.setOnClickListener() {
             currentDay = "FRIDAY"
+            Log.d("DAYTAG", currentDay)
         }
 
         saturdayButton.setOnClickListener() {
             currentDay = "SATURDAY"
+            Log.d("DAYTAG", currentDay)
+
         }
 // --------------------------------------------------------------
 
@@ -101,7 +108,7 @@ class ScheduleActivity : AppCompatActivity() {
             val dialog = TimePickerDialog(
                 this@ScheduleActivity,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth, startTimeSetListener,
-                hour, minutes, true
+                8, 0, true
             )
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()
@@ -122,7 +129,7 @@ class ScheduleActivity : AppCompatActivity() {
             val dialog = TimePickerDialog(
                 this@ScheduleActivity,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth, endTimeSetListener,
-                hour, minutes, true
+                8, 45, true
             )
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()

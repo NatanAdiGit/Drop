@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +20,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        val sced : Button = findViewById(R.id.next_button)
+        val init : Button = findViewById(R.id.init)
 
-        val scheduleIntent = Intent(this@MainActivity, ScheduleActivity::class.java)
-        startActivity(scheduleIntent)
+        init.setOnClickListener {
+            val intent = Intent(this@MainActivity, DropInitActivity::class.java)
+            startActivity(intent)
+        }
+
+        sced.setOnClickListener {
+            val intent = Intent(this@MainActivity, ScheduleActivity::class.java)
+            startActivity(intent)
+        }
+
+//        val scheduleIntent = Intent(this@MainActivity, ScheduleActivity::class.java)
+//        startActivity(scheduleIntent)
 
 
         val broadcastReceiverForSuccess =  object : BroadcastReceiver() {
@@ -52,21 +66,5 @@ class MainActivity : AppCompatActivity() {
 //        registerReceiver(broadcastReceiverForSuccess, filter)
 
 
-
-
-
-
-//        val sced : Button = findViewById(R.id.next_button)
-//        val init : Button = findViewById(R.id.init)
-//
-//        init.setOnClickListener {
-//            val intent = Intent(this@MainActivity, DropInitActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        sced.setOnClickListener {
-//            val intent = Intent(this@MainActivity, ScheduleActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 }
