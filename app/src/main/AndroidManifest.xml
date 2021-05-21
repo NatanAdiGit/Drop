@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Drop">
-        <activity android:name=".GameOverActivity"></activity>
-        <activity android:name=".WelcomePageActivity"></activity>
+        <activity android:name=".TimerActivity"></activity>
+        <activity android:name=".GameOverActivity" />
+        <activity android:name=".WelcomePageActivity" />
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".DropInitActivity" />
         <activity android:name=".MainActivity">
