@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var droplingSprite : DroplingSprite
 
 
+    val userData = UserData("Keren", "Momo")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -67,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         val handler = Handler()
         val delay: Long = 1000 // 1000 milliseconds == 1 second
+
         val bubble: ImageView = findViewById(R.id.imageView5)
 
         startCountingTenMin = System.currentTimeMillis()
@@ -115,10 +119,10 @@ class MainActivity : AppCompatActivity() {
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
             Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
-            DropUser.getDropUser().energyLevel -= 30
-            Log.e("ennnnnergy",DropUser.getDropUser().energyLevel.toString())
-            if (DropUser.getDropUser().energyLevel < 0) {
-                DropUser.getDropUser().energyLevel = 0
+            userData.energyLevel -= 30
+            Log.e("ennnnnergy",userData.energyLevel.toString())
+            if (userData.energyLevel < 0) {
+                userData.energyLevel = 0
             }
             DropUser.getDropUser().loveLevel -= 10
             if (DropUser.getDropUser().loveLevel < 0) {
