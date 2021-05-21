@@ -46,8 +46,7 @@ class DropInitActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             val intent = Intent(this@DropInitActivity, ScheduleActivity::class.java)
             startActivity(intent)
-            DropName.setDropName(nameText.text.toString())
-            Log.e("DROPTAG", DropName.getDropName())
+            DropUser.setDropName(nameText.text.toString())
             finish()
         }
     }

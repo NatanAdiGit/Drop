@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var droplingSprite : DroplingSprite
 
 
-    val userData = UserData("Keren", "Momo")
+    val userData = UserData( "Momo")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,12 +147,11 @@ class MainActivity : AppCompatActivity() {
                 hungryProgBar.progress = DropUser.getDropUser().hungerLevel
             }
         }
-
-        DropUser.getDropUser().energyLevel = 20
 //
-//        if (userData.energyLevel < MIN_ENERGY_LEVE)
+//        DropUser.getDropUser().energyLevel = 20
+//        if (DropUser.getDropUser().energyLevel < MIN_ENERGY_LEVE)
 //            droplingSprite.showSadState() // todo
-//
+
 //        else if (userData.loveLevel < MIN_LOVE_LEVEL)
 //            droplingSprite.showSadState() // todo
 //
