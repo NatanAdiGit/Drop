@@ -183,7 +183,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         sendScheduleButton.setOnClickListener {
 
-            mainSchedule.setSchedule(schedule)
+            MainSchedule.setSchedule(schedule)
 
             finish()
         }

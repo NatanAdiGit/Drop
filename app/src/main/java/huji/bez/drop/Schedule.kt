@@ -20,9 +20,12 @@ class Schedule : Serializable {
     )
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun isBlocking() : Boolean? {
-        val currentDay : String = LocalDate.now().dayOfWeek.toString()
-        return daysMap[currentDay]?.isBlocking()
+    fun isBlocking() : Boolean {
+        if (!isEmpty()) {
+            val currentDay: String = LocalDate.now().dayOfWeek.toString()
+            return daysMap[currentDay]!!.isBlocking()
+        }
+        return false
     }
 
     fun isEmpty() : Boolean {
