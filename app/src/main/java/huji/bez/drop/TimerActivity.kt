@@ -15,11 +15,11 @@ class TimerActivity : AppCompatActivity() {
 
         object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                timer.setText("seconds remaining: " + millisUntilFinished / 1000)
+                timer.text = "seconds remaining: " + millisUntilFinished / 1000
             }
 
             override fun onFinish() {
-                timer.setText("done!")
+                timer.text = "done!"
             }
         }.start()
     }
