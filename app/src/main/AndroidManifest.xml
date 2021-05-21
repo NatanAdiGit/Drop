@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.Drop">
         <activity android:name=".GameOverActivity"></activity>
-        <activity android:name=".WelcomePageActivity" />
+        <activity android:name=".WelcomePageActivity"></activity>
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".DropInitActivity" />
         <activity android:name=".MainActivity">
