@@ -5,24 +5,23 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.HandlerCompat.postDelayed
+import androidx.core.os.postDelayed
 import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
 
-    private var schedule = Schedule()
-
     private var pressedTimeBackButton: Long = 0
 
     private var isNotFocused = false
-
-    private var isOnBlockedMode = false
 
     private var startCountingTenMin: Long = 0
 
@@ -41,9 +40,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var droplingSprite : DroplingSprite
 
 
-    val userData = UserData("Keren", "Momo")
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -59,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         hungryProgBar.progress = DropUser.getDropUser().hungerLevel
 
 
+
         if (savedInstanceState == null) {
             val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
             startActivity(intent)
@@ -68,13 +65,15 @@ class MainActivity : AppCompatActivity() {
         droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
         droplingSprite.showIdleState()
 
-        val handler = Handler()
+        val dropName : TextView = findViewById(R.id.nameText)
+        dropName.text = DropUser.getDropUser().dropName
+
         val delay: Long = 1000 // 1000 milliseconds == 1 second
 
         val bubble: ImageView = findViewById(R.id.imageView5)
 
         startCountingTenMin = System.currentTimeMillis()
-        handler.postDelayed(object : Runnable {
+        Handler(Looper.getMainLooper()).postDelayed(object : Runnable {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun run() {
                 if (runOnRepeat())
@@ -85,9 +84,23 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     bubble.visibility = View.GONE
                 }
-                handler.postDelayed(this, delay)
+                Handler(Looper.getMainLooper()).postDelayed(this, delay)
             }
         }, delay)
+//        handler.postDelayed(object : Runnable {
+//            @RequiresApi(Build.VERSION_CODES.O)
+//            override fun run() {
+//                if (runOnRepeat())
+//                    return
+//                println("myHandler: here!") // Do your work here
+//                if (bubble.visibility == View.GONE) {
+//                    bubble.visibility = View.VISIBLE
+//                } else {
+//                    bubble.visibility = View.GONE
+//                }
+//                handler.postDelayed(this, delay)
+//            }
+//        }, delay)
     }
 
 
@@ -119,10 +132,10 @@ class MainActivity : AppCompatActivity() {
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
             Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
-            userData.energyLevel -= 30
-            Log.e("ennnnnergy",userData.energyLevel.toString())
-            if (userData.energyLevel < 0) {
-                userData.energyLevel = 0
+            DropUser.getDropUser().energyLevel -= 30
+            Log.e("ennnnnergy",DropUser.getDropUser().energyLevel.toString())
+            if (DropUser.getDropUser().energyLevel < 0) {
+                DropUser.getDropUser().energyLevel = 0
             }
             DropUser.getDropUser().loveLevel -= 10
             if (DropUser.getDropUser().loveLevel < 0) {
@@ -149,15 +162,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         DropUser.getDropUser().energyLevel = 20
-//
-//        if (userData.energyLevel < MIN_ENERGY_LEVE)
-//            droplingSprite.showSadState() // todo
-//
-//        else if (userData.loveLevel < MIN_LOVE_LEVEL)
-//            droplingSprite.showSadState() // todo
-//
-//        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
-//            droplingSprite.showSadState() // todo
+
+        if (DropUser.getDropUser().energyLevel < MIN_ENERGY_LEVE)
+            droplingSprite.showSadState() // todo
+
+        else if (DropUser.getDropUser().loveLevel < MIN_LOVE_LEVEL)
+            droplingSprite.showSadState() // todo
+
+        else if (DropUser.getDropUser().hungerLevel < MIN_HUNGRY_LEVE)
+            droplingSprite.showSadState() // todo
 
         return false
         }
