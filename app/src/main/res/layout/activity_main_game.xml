@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07" />
+        app:layout_constraintGuide_begin="51dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor2"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_begin="270dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor4"
@@ -40,6 +40,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHor6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.47" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVer1"
@@ -83,12 +90,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.65" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVer5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -98,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guidelineHor2"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintVertical_bias="0.494"
         app:srcCompat="@drawable/page" />
 
     <TextView
@@ -126,6 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@id/guidelineHor2"
         app:layout_constraintStart_toEndOf="@id/guidelineVer5"
         app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
@@ -136,24 +138,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="days"
-        app:layout_constraintStart_toEndOf="@id/guidelineVer6"
-        app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
+        app:layout_constraintBottom_toTopOf="@id/guidelineHor2"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer6" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="17"
-        tools:layout_editor_absoluteX="269dp"
-        tools:layout_editor_absoluteY="51dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@id/guidelineVer6"
-        app:layout_constraintTop_toTopOf="@id/guidelineHor1" />
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1"
+        tools:layout_editor_absoluteX="269dp"
+        tools:layout_editor_absoluteY="51dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="hours"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHor2"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer2"
         tools:layout_editor_absoluteX="325dp"
         tools:layout_editor_absoluteY="76dp" />
 
@@ -163,8 +168,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="22"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@id/guidelineVer2"
+        app:layout_constraintTop_toTopOf="@id/guidelineHor1"
         tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="51dp" />
+        tools:layout_editor_absoluteY="51dp" />/>
 
     <ImageView
         android:id="@+id/energy"
@@ -246,10 +254,9 @@
         android:id="@+id/imageView5"
         android:layout_width="115dp"
         android:layout_height="125dp"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineHor3"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHor6"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
         app:layout_constraintStart_toStartOf="@+id/guidelineVer3"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHor3"
         app:srcCompat="@drawable/want_heart" />
 
 
