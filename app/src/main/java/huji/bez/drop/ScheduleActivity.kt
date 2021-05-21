@@ -204,11 +204,9 @@ class ScheduleActivity : AppCompatActivity() {
         itemsRecycler.adapter = adapter
         itemsRecycler.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false /*reverseLayout*/)
-
         sendScheduleButton.setOnClickListener {
 
             MainSchedule.setSchedule(schedule)
-
             finish()
         }
 
