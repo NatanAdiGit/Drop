@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     private val MIN_ENERGY_LEVE = 50
 
-    private val energyProgBar :ProgressBar = findViewById(R.id.progressBarEnergy)
+    private lateinit var energyProgBar : ProgressBar
 
-    private val loveProgBar :ProgressBar = findViewById(R.id.progressBarHeart)
+    private lateinit var loveProgBar : ProgressBar
 
-    private val hungryProgBar :ProgressBar = findViewById(R.id.progressBarWater)
+    private lateinit var hungryProgBar : ProgressBar
 
     private val userData = UserData("Keren", "Momo")
 
@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_game)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        energyProgBar  = findViewById(R.id.progressBarEnergy)
+        loveProgBar  = findViewById(R.id.progressBarHeart)
+        hungryProgBar = findViewById(R.id.progressBarWater)
 
         Log.d("CREATEMAINTAG", "WHYYYYYYYYYYYYYYYYYYYYYY")
 
