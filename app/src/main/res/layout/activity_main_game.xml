@@ -32,14 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.67" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor6"
@@ -178,6 +178,7 @@
         android:id="@+id/energy"
         android:layout_width="30dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/heart"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
         app:layout_constraintStart_toStartOf="@+id/guidelineVer2"
@@ -198,6 +199,7 @@
         android:id="@+id/pot"
         android:layout_width="30dp"
         android:layout_height="36dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHor5"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
         app:layout_constraintStart_toStartOf="@+id/guidelineVer2"

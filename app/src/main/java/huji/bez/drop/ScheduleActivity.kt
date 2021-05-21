@@ -26,19 +26,18 @@ import java.util.*
 class ScheduleActivity : AppCompatActivity() {
 
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
-        val createSessionButton: FloatingActionButton = findViewById(R.id.addNewSessionButton)
+        val createSessionButton: Button = findViewById(R.id.addNewSessionButton)
         val editSessionView: EditText = findViewById(R.id.newTask)
         val endTimeButton: Button = findViewById(R.id.endTimeButton)
         val startTimeButton: Button = findViewById(R.id.startTimeButton)
-        val sendScheduleButton : Button = findViewById(R.id.sendSchedule)
+        val sendScheduleButton: Button = findViewById(R.id.sendSchedule)
 
-        var startTime: String= startTimeButton.text.toString()
+        var startTime: String = startTimeButton.text.toString()
         var endTime: String = endTimeButton.text.toString()
         var currentDay = "SUNDAY"
         val adapter = SessionsAdapter()
@@ -57,58 +56,81 @@ class ScheduleActivity : AppCompatActivity() {
         val fridayButton: Button = findViewById(R.id.friday)
         val saturdayButton: Button = findViewById(R.id.saturday)
 
+        fun enableAllDays() {
+            sundayButton.isEnabled = true
+            mondayButton.isEnabled = true
+            tuesdayButton.isEnabled = true
+            wednesdayButton.isEnabled = true
+            thursdayButton.isEnabled = true
+            fridayButton.isEnabled = true
+            saturdayButton.isEnabled = true
+        }
         sundayButton.setOnClickListener() {
             currentDay = "SUNDAY"
-            sundayButton.isPressed = true
+            enableAllDays()
+            sundayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         mondayButton.setOnClickListener() {
             currentDay = "MONDAY"
+            enableAllDays()
+            mondayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         tuesdayButton.setOnClickListener() {
             currentDay = "TUESDAY"
+            enableAllDays()
+            tuesdayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         wednesdayButton.setOnClickListener() {
             currentDay = "WEDNESDAY"
+            enableAllDays()
+            wednesdayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         thursdayButton.setOnClickListener() {
             currentDay = "THURSDAY"
+            enableAllDays()
+            thursdayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         fridayButton.setOnClickListener() {
             currentDay = "FRIDAY"
+            enableAllDays()
+            fridayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
         }
 
         saturdayButton.setOnClickListener() {
             currentDay = "SATURDAY"
+            enableAllDays()
+            saturdayButton.isEnabled = false
             Log.d("DAYTAG", currentDay)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
 
         }
 // --------------------------------------------------------------
 
-        val startTimeSetListener: OnTimeSetListener = OnTimeSetListener { timePicker, hour, minute ->
-            val f24 : SimpleDateFormat = SimpleDateFormat("HH:mm")
-            val date: Date = f24.parse("$hour:$minute")
-            Log.d("TIMETAG", "onDateSet: dd/mm/yyy: ${f24.format(date)}")
-            startTime = f24.format(date)
-            startTimeButton.text = startTime
-        }
+        val startTimeSetListener: OnTimeSetListener =
+            OnTimeSetListener { timePicker, hour, minute ->
+                val f24: SimpleDateFormat = SimpleDateFormat("HH:mm")
+                val date: Date = f24.parse("$hour:$minute")
+                Log.d("TIMETAG", "onDateSet: dd/mm/yyy: ${f24.format(date)}")
+                startTime = f24.format(date)
+                startTimeButton.text = startTime
+            }
 
         startTimeButton.setOnClickListener(View.OnClickListener {
             val cal: Calendar = Calendar.getInstance()
@@ -124,7 +146,7 @@ class ScheduleActivity : AppCompatActivity() {
         })
 
         val endTimeSetListener: OnTimeSetListener = OnTimeSetListener { timePicker, hour, minute ->
-            val f24 : SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val f24: SimpleDateFormat = SimpleDateFormat("HH:mm")
             val date: Date = f24.parse("$hour:$minute")
             Log.d("TIMETAG", "onDateSet: dd/mm/yyy: ${f24.format(date)}")
             endTime = f24.format(date)
@@ -148,16 +170,16 @@ class ScheduleActivity : AppCompatActivity() {
 
         adapter.setItems(schedule.getSessionsFromDay(currentDay))
 
-        createSessionButton.setOnClickListener{
+        createSessionButton.setOnClickListener {
 
-            val description:String = editSessionView.text.toString()
-            var newSession:Session = Session(
+            val description: String = editSessionView.text.toString()
+            var newSession: Session = Session(
                 description,
                 LocalTime.parse(startTime),
                 LocalTime.parse(endTime)
             )
 
-            Log.d("the_session", newSession.description + " " + newSession.startTime.toString() )
+            Log.d("the_session", newSession.description + " " + newSession.startTime.toString())
 
             schedule.addSessionToDay(currentDay, newSession)
             adapter.setItems(schedule.getSessionsFromDay(currentDay))
@@ -183,20 +205,13 @@ class ScheduleActivity : AppCompatActivity() {
 
         sendScheduleButton.setOnClickListener {
 
-            mainSchedule.setSchedule(schedule)
+            MainSchedule.setSchedule(schedule)
 
             finish()
         }
 
 
-
-
-
-
     }
-
-
-
 
 
 }
