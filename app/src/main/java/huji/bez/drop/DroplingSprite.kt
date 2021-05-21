@@ -7,8 +7,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 
-class DroplingSprite
-    (activity: AppCompatActivity) {
+class DroplingSprite(activity: AppCompatActivity) {
     private var imageViewDropBody: ImageView = activity.findViewById(R.id.imageViewDropBody)
     private var imageViewDropFeatures: ImageView = activity.findViewById(R.id.imageViewDropFeatures)
     var parentActivity : AppCompatActivity = activity
@@ -26,6 +25,11 @@ class DroplingSprite
     fun showIdleState() {
         Glide.with(parentActivity).load(R.drawable.idle_body).into(imageViewDropBody)
         Glide.with(parentActivity).load(R.drawable.idle_parts).into(imageViewDropFeatures)
+    }
+
+    fun showSadState(activity: AppCompatActivity) {
+        Glide.with(activity).load(R.drawable.sad_body).into(imageViewDropBody)
+        Glide.with(activity).load(R.drawable.sad_parts).into(imageViewDropFeatures)
     }
 
     /**** Movement Controls ****/

@@ -1,6 +1,7 @@
 package huji.bez.drop
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -10,6 +11,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +38,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var hungryProgBar : ProgressBar
 
-    private val userData = UserData("Keren", "Momo")
+    lateinit var droplingSprite : DroplingSprite
+
+
+    val userData = UserData("Keren", "Momo")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,10 +54,24 @@ class MainActivity : AppCompatActivity() {
         loveProgBar  = findViewById(R.id.progressBarHeart)
         hungryProgBar = findViewById(R.id.progressBarWater)
 
+        energyProgBar.progress = userData.energyLevel
+        loveProgBar.progress = userData.loveLevel
+        hungryProgBar.progress = userData.hungerLevel
+
         Log.d("CREATEMAINTAG", "WHYYYYYYYYYYYYYYYYYYYYYY")
 
-//        val droplingSprite: DroplingSprite = DroplingSprite(this)
-//        droplingSprite.showIdleState()
+
+
+
+
+
+
+        droplingSprite = DroplingSprite(this@MainActivity)
+        droplingSprite.showIdleState()
+       // droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
+
+
+
 
         if (savedInstanceState == null) {
 
@@ -61,9 +80,6 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-//        val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
-//        startActivity(intent)
-
 
         val handler = Handler()
         val delay: Long = 1000 // 1000 milliseconds == 1 second
@@ -71,17 +87,6 @@ class MainActivity : AppCompatActivity() {
         val bubble: ImageView = findViewById(R.id.imageView5)
 
         startCountingTenMin = System.currentTimeMillis()
-//        handler.postDelayed(object : Runnable {
-//            override fun run() {
-//                println("myHandler: here!") // Do your work here
-//                if (bubble.visibility == View.GONE) {
-//                    bubble.visibility = View.VISIBLE
-//                } else {
-//                    bubble.visibility = View.GONE
-//                }
-//                handler.postDelayed(this, delay)
-//            }
-//        }, delay)
         handler.postDelayed(object : Runnable {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun run() {
@@ -156,17 +161,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        if (userData.energyLevel < MIN_ENERGY_LEVE)
-//        // todo - call low level function
-//
-//        else if (userData.loveLevel < MIN_LOVE_LEVEL)
-//        // todo - call low level function
-//
-//        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
-//        // todo - call low level function
+        userData.energyLevel = 20
+        energyProgBar.progress=20
+
+
+        if (userData.energyLevel < MIN_ENERGY_LEVE) {
+            var imageViewDropBodyS: ImageView = this.findViewById(R.id.imageViewDropBody)
+            var imageViewDropFeaturesS: ImageView = this.findViewById(R.id.imageViewDropFeatures)
+            Glide.with(this).load(R.drawable.sad_body).into(imageViewDropBodyS)
+            Glide.with(this).load(R.drawable.sad_parts).into(imageViewDropFeaturesS) // todo
+             }
+
+        else if (userData.loveLevel < MIN_LOVE_LEVEL)
+            droplingSprite.showSadState(this) // todo
+
+        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
+            droplingSprite.showSadState(this) // todo
 
         return false
-    }
+        }
+
 }
 
 object MainSchedule {
@@ -181,16 +195,22 @@ object MainSchedule {
     }
 }
 
-object DropName {
-    private lateinit var dropName: String
+object DropUser {
+    private lateinit var dropUser: UserData
 
-    fun getDropName(): String {
-        return dropName
+    fun getDropUser(): UserData {
+        return dropUser
     }
 
     fun setDropName(name: String) {
-        dropName = name
+        dropUser.dropName = name
     }
+
+    fun setDropColor(color: String) {
+        dropUser.color = color
+    }
+
+
 
 
 }
