@@ -54,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         loveProgBar.progress = DropUser.getDropUser().loveLevel
         hungryProgBar.progress = DropUser.getDropUser().hungerLevel
 
-
+        val icon: ImageView = findViewById(R.id.imageViewDropFeatures)
+        icon.visibility = View.GONE
 
         if (savedInstanceState == null) {
             val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
@@ -79,28 +80,14 @@ class MainActivity : AppCompatActivity() {
                 if (runOnRepeat())
                     return
                 println("myHandler: here!") // Do your work here
-                if (bubble.visibility == View.GONE) {
-                    bubble.visibility = View.VISIBLE
-                } else {
-                    bubble.visibility = View.GONE
-                }
-                Handler(Looper.getMainLooper()).postDelayed(this, delay)
-            }
-        }, delay)
-//        handler.postDelayed(object : Runnable {
-//            @RequiresApi(Build.VERSION_CODES.O)
-//            override fun run() {
-//                if (runOnRepeat())
-//                    return
-//                println("myHandler: here!") // Do your work here
 //                if (bubble.visibility == View.GONE) {
 //                    bubble.visibility = View.VISIBLE
 //                } else {
 //                    bubble.visibility = View.GONE
 //                }
-//                handler.postDelayed(this, delay)
-//            }
-//        }, delay)
+                Handler(Looper.getMainLooper()).postDelayed(this, delay)
+            }
+        }, delay)
     }
 
 
