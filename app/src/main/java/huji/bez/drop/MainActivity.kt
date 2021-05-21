@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     private val MIN_ENERGY_LEVE = 50
 
-    private lateinit var energyProgBar : ProgressBar
+    private lateinit var energyProgBar: ProgressBar
 
-    private lateinit var loveProgBar : ProgressBar
+    private lateinit var loveProgBar: ProgressBar
 
-    private lateinit var hungryProgBar : ProgressBar
+    private lateinit var hungryProgBar: ProgressBar
 
     private val userData = UserData("Keren", "Momo")
 
@@ -45,9 +45,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_game)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        energyProgBar  = findViewById(R.id.progressBarEnergy)
-        loveProgBar  = findViewById(R.id.progressBarHeart)
+        energyProgBar = findViewById(R.id.progressBarEnergy)
+        loveProgBar = findViewById(R.id.progressBarHeart)
         hungryProgBar = findViewById(R.id.progressBarWater)
+
+        val name: TextView = findViewById(R.id.nameText)
 
         Log.d("CREATEMAINTAG", "WHYYYYYYYYYYYYYYYYYYYYYY")
 
@@ -56,10 +58,12 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
 
-//            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
-            val intent = Intent(this@MainActivity, TimerActivity::class.java)
-            startActivity(intent)
+            val newIntent = Intent(this@MainActivity, WelcomePageActivity::class.java)
+//            val newIntent = Intent(this@MainActivity, TimerActivity::class.java)
+            startActivity(newIntent)
+//            Log.e("DROPTAG2", DropName.getDropName())
 
+//            name.text = DropName.getDropName()
 
         }
 //        val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
@@ -123,13 +127,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun runOnRepeat() : Boolean {
-        Log.e("is_not_focuse",isNotFocused.toString())
+    fun runOnRepeat(): Boolean {
+        Log.e("is_not_focuse", isNotFocused.toString())
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
-            Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
+            Log.e("I_entered", (isScheduleIsBlockingNow && isNotFocused).toString())
             userData.energyLevel -= 30
-            Log.e("ennnnnergy",userData.energyLevel.toString())
+            Log.e("ennnnnergy", userData.energyLevel.toString())
             if (userData.energyLevel < 0) {
                 userData.energyLevel = 0
             }

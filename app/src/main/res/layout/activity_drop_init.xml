@@ -77,14 +77,14 @@
         android:text="Create Your Drop"
         android:textAlignment="center"
         android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@id/nameText"
+        app:layout_constraintBottom_toTopOf="@id/nameEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guidelineH0" />
 
 
     <EditText
-        android:id="@+id/nameText"
+        android:id="@+id/nameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/grey"
@@ -106,7 +106,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guidelineH2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameText" />
+        app:layout_constraintTop_toBottomOf="@id/nameEdit" />
 
     <View
         android:id="@+id/color1"
