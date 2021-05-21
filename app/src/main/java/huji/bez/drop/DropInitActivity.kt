@@ -25,25 +25,24 @@ class DropInitActivity : AppCompatActivity() {
         var nameText : EditText = findViewById(R.id.nameEdit)
 
         val avatar: ImageView = findViewById(R.id.avatar)
+        colorButton1.setOnClickListener {
+            DropUser.setDropColor("#CCF1FF")
+        }
+
+        colorButton2.setOnClickListener {
+            DropUser.setDropColor("#E0D7FF")
+        }
+
+        colorButton3.setOnClickListener {
+            DropUser.setDropColor("#FFCCE1")
+        }
+
+        colorButton4.setOnClickListener {
+            DropUser.setDropColor("#FAFFC7")
+        }
+
 
         val nextButton: Button = findViewById(R.id.next_button)
-
-        colorButton1.setOnClickListener() {
-            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color1))
-        }
-
-        colorButton2.setOnClickListener() {
-            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color2))
-        }
-
-        colorButton3.setOnClickListener() {
-            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color3))
-        }
-
-        colorButton4.setOnClickListener() {
-            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color4))
-        }
-
         nextButton.setOnClickListener {
             val intent = Intent(this@DropInitActivity, ScheduleActivity::class.java)
             startActivity(intent)
