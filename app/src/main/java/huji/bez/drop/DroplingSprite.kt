@@ -27,9 +27,9 @@ class DroplingSprite(activity: AppCompatActivity) {
         Glide.with(parentActivity).load(R.drawable.idle_parts).into(imageViewDropFeatures)
     }
 
-    fun showSadState(activity: AppCompatActivity) {
-        Glide.with(activity).load(R.drawable.sad_body).into(imageViewDropBody)
-        Glide.with(activity).load(R.drawable.sad_parts).into(imageViewDropFeatures)
+    fun showSadState() {
+        Glide.with(parentActivity).load(R.drawable.sad_body).into(imageViewDropBody)
+        Glide.with(parentActivity).load(R.drawable.sad_parts).into(imageViewDropFeatures)
     }
 
     /**** Movement Controls ****/

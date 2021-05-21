@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private val MIN_ENERGY_LEVE = 50
 
-    private lateinit var energyProgBar: ProgressBar
+    private lateinit var energyProgBar : ProgressBar
 
-    private lateinit var loveProgBar: ProgressBar
+    private lateinit var loveProgBar : ProgressBar
 
-    private lateinit var hungryProgBar: ProgressBar
+    private lateinit var hungryProgBar : ProgressBar
 
     lateinit var droplingSprite : DroplingSprite
 
@@ -50,41 +50,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_game)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        energyProgBar = findViewById(R.id.progressBarEnergy)
-        loveProgBar = findViewById(R.id.progressBarHeart)
+        energyProgBar  = findViewById(R.id.progressBarEnergy)
+        loveProgBar  = findViewById(R.id.progressBarHeart)
         hungryProgBar = findViewById(R.id.progressBarWater)
 
-        val name: TextView = findViewById(R.id.nameText)
-
-        energyProgBar.progress = userData.energyLevel
-        loveProgBar.progress = userData.loveLevel
-        hungryProgBar.progress = userData.hungerLevel
-
-        Log.d("CREATEMAINTAG", "WHYYYYYYYYYYYYYYYYYYYYYY")
-
-
-
-
-
-
-
-        droplingSprite = DroplingSprite(this@MainActivity)
-        droplingSprite.showIdleState()
-       // droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
-
-
+        energyProgBar.progress = DropUser.getDropUser().energyLevel
+        loveProgBar.progress = DropUser.getDropUser().loveLevel
+        hungryProgBar.progress = DropUser.getDropUser().hungerLevel
 
 
         if (savedInstanceState == null) {
-
-            val newIntent = Intent(this@MainActivity, WelcomePageActivity::class.java)
-//            val newIntent = Intent(this@MainActivity, TimerActivity::class.java)
-            startActivity(newIntent)
-//            Log.e("DROPTAG2", DropName.getDropName())
-
-//            name.text = DropName.getDropName()
-
+            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
+            startActivity(intent)
         }
+
+        droplingSprite = DroplingSprite(this)
+        droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
+        droplingSprite.showIdleState()
 
         val handler = Handler()
         val delay: Long = 1000 // 1000 milliseconds == 1 second
@@ -132,56 +114,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun runOnRepeat(): Boolean {
-        Log.e("is_not_focuse", isNotFocused.toString())
+    fun runOnRepeat() : Boolean {
+        Log.e("is_not_focuse",isNotFocused.toString())
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
-            Log.e("I_entered", (isScheduleIsBlockingNow && isNotFocused).toString())
+            Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
             userData.energyLevel -= 30
-            Log.e("ennnnnergy", userData.energyLevel.toString())
+            Log.e("ennnnnergy",userData.energyLevel.toString())
             if (userData.energyLevel < 0) {
                 userData.energyLevel = 0
             }
-            userData.loveLevel -= 10
-            if (userData.loveLevel < 0) {
-                userData.loveLevel = 0
+            DropUser.getDropUser().loveLevel -= 10
+            if (DropUser.getDropUser().loveLevel < 0) {
+                DropUser.getDropUser().loveLevel = 0
             }
 
-            userData.hungerLevel -= 15
-            if (userData.hungerLevel < 0) {
-                userData.hungerLevel = 0
+            DropUser.getDropUser().hungerLevel -= 15
+            if (DropUser.getDropUser().hungerLevel < 0) {
+                DropUser.getDropUser().hungerLevel = 0
             }
-            energyProgBar.progress = userData.energyLevel
-            loveProgBar.progress = userData.loveLevel
-            hungryProgBar.progress = userData.hungerLevel
+            energyProgBar.progress = DropUser.getDropUser().energyLevel
+            loveProgBar.progress = DropUser.getDropUser().loveLevel
+            hungryProgBar.progress = DropUser.getDropUser().hungerLevel
             return true
         }
 
         if (isScheduleIsBlockingNow && !isNotFocused) {
             if (System.currentTimeMillis() - startCountingTenMin > 600000) {
-                userData.energyLevel += 5
-                userData.hungerLevel += 3
-                energyProgBar.progress = userData.energyLevel
-                hungryProgBar.progress = userData.hungerLevel
+                DropUser.getDropUser().energyLevel += 5
+                DropUser.getDropUser().hungerLevel += 3
+                energyProgBar.progress = DropUser.getDropUser().energyLevel
+                hungryProgBar.progress = DropUser.getDropUser().hungerLevel
             }
         }
 
-        userData.energyLevel = 20
-        energyProgBar.progress=20
-
-
-        if (userData.energyLevel < MIN_ENERGY_LEVE) {
-            var imageViewDropBodyS: ImageView = this.findViewById(R.id.imageViewDropBody)
-            var imageViewDropFeaturesS: ImageView = this.findViewById(R.id.imageViewDropFeatures)
-            Glide.with(this).load(R.drawable.sad_body).into(imageViewDropBodyS)
-            Glide.with(this).load(R.drawable.sad_parts).into(imageViewDropFeaturesS) // todo
-             }
-
-        else if (userData.loveLevel < MIN_LOVE_LEVEL)
-            droplingSprite.showSadState(this) // todo
-
-        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
-            droplingSprite.showSadState(this) // todo
+        DropUser.getDropUser().energyLevel = 20
+//
+//        if (userData.energyLevel < MIN_ENERGY_LEVE)
+//            droplingSprite.showSadState() // todo
+//
+//        else if (userData.loveLevel < MIN_LOVE_LEVEL)
+//            droplingSprite.showSadState() // todo
+//
+//        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
+//            droplingSprite.showSadState() // todo
 
         return false
         }
@@ -201,7 +177,7 @@ object MainSchedule {
 }
 
 object DropUser {
-    private lateinit var dropUser: UserData
+    private var dropUser: UserData = UserData("user")
 
     fun getDropUser(): UserData {
         return dropUser
