@@ -6,18 +6,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
 
-    //    private val userData = UserData()
+
     private var schedule = Schedule()
+
     private var pressedTimeBackButton: Long = 0
 
     private var isNotFocused = false
@@ -31,6 +29,12 @@ class MainActivity : AppCompatActivity() {
     private val MIN_HUNGRY_LEVE = 50
 
     private val MIN_ENERGY_LEVE = 50
+
+    private val energyProgBar :ProgressBar = findViewById(R.id.progressBarEnergy)
+
+    private val loveProgBar :ProgressBar = findViewById(R.id.progressBarHeart)
+
+    private val hungryProgBar :ProgressBar = findViewById(R.id.progressBarWater)
 
     private val userData = UserData("Keren", "Momo")
 
@@ -124,7 +128,6 @@ class MainActivity : AppCompatActivity() {
             if (userData.energyLevel < 0) {
                 userData.energyLevel = 0
             }
-
             userData.loveLevel -= 10
             if (userData.loveLevel < 0) {
                 userData.loveLevel = 0
@@ -134,6 +137,9 @@ class MainActivity : AppCompatActivity() {
             if (userData.hungerLevel < 0) {
                 userData.hungerLevel = 0
             }
+            energyProgBar.progress = userData.energyLevel
+            loveProgBar.progress = userData.loveLevel
+            hungryProgBar.progress = userData.hungerLevel
             return true
         }
 
@@ -141,6 +147,8 @@ class MainActivity : AppCompatActivity() {
             if (System.currentTimeMillis() - startCountingTenMin > 600000) {
                 userData.energyLevel += 5
                 userData.hungerLevel += 3
+                energyProgBar.progress = userData.energyLevel
+                hungryProgBar.progress = userData.hungerLevel
             }
         }
 
