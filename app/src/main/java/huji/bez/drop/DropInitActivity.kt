@@ -47,6 +47,7 @@ class DropInitActivity : AppCompatActivity() {
             val intent = Intent(this@DropInitActivity, ScheduleActivity::class.java)
             startActivity(intent)
             DropUser.setDropName(nameText.text.toString())
+//            Log.e("DROPTAG", DropName.getDropName())
             finish()
         }
     }

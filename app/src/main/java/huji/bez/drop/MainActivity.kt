@@ -5,24 +5,23 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.HandlerCompat.postDelayed
+import androidx.core.os.postDelayed
 import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
 
-    private var schedule = Schedule()
-
     private var pressedTimeBackButton: Long = 0
 
     private var isNotFocused = false
-
-    private var isOnBlockedMode = false
 
     private var startCountingTenMin: Long = 0
 
@@ -39,9 +38,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var hungryProgBar : ProgressBar
 
     lateinit var droplingSprite : DroplingSprite
-
-
-    val userData = UserData( "Momo")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,11 +143,12 @@ class MainActivity : AppCompatActivity() {
                 hungryProgBar.progress = DropUser.getDropUser().hungerLevel
             }
         }
-//
-//        DropUser.getDropUser().energyLevel = 20
-//        if (DropUser.getDropUser().energyLevel < MIN_ENERGY_LEVE)
-//            droplingSprite.showSadState() // todo
 
+        DropUser.getDropUser().energyLevel = 20
+//
+//        if (userData.energyLevel < MIN_ENERGY_LEVE)
+//            droplingSprite.showSadState() // todo
+//
 //        else if (userData.loveLevel < MIN_LOVE_LEVEL)
 //            droplingSprite.showSadState() // todo
 //
