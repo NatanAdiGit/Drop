@@ -75,7 +75,8 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
 
-            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
+//            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
+            val intent = Intent(this@MainActivity, TimerActivity::class.java)
             startActivity(intent)
 
 

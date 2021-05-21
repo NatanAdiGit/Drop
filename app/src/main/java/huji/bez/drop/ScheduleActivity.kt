@@ -56,6 +56,8 @@ class ScheduleActivity : AppCompatActivity() {
         val fridayButton: Button = findViewById(R.id.friday)
         val saturdayButton: Button = findViewById(R.id.saturday)
 
+        sundayButton.isEnabled = false
+
         fun enableAllDays() {
             sundayButton.isEnabled = true
             mondayButton.isEnabled = true
