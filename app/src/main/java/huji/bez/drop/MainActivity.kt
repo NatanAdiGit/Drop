@@ -66,15 +66,13 @@ class MainActivity : AppCompatActivity() {
         droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
         droplingSprite.showIdleState()
 
-        val dropName : TextView = findViewById(R.id.nameText)
-        dropName.text = DropUser.getDropUser().dropName
-
+        val handler = Handler()
         val delay: Long = 1000 // 1000 milliseconds == 1 second
 
         val bubble: ImageView = findViewById(R.id.imageView5)
 
         startCountingTenMin = System.currentTimeMillis()
-        Handler(Looper.getMainLooper()).postDelayed(object : Runnable {
+        handler.postDelayed(object : Runnable {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun run() {
                 if (runOnRepeat())
@@ -119,10 +117,10 @@ class MainActivity : AppCompatActivity() {
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
             Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
-            DropUser.getDropUser().energyLevel -= 30
-            Log.e("ennnnnergy",DropUser.getDropUser().energyLevel.toString())
-            if (DropUser.getDropUser().energyLevel < 0) {
-                DropUser.getDropUser().energyLevel = 0
+            userData.energyLevel -= 30
+            Log.e("ennnnnergy",userData.energyLevel.toString())
+            if (userData.energyLevel < 0) {
+                userData.energyLevel = 0
             }
             DropUser.getDropUser().loveLevel -= 10
             if (DropUser.getDropUser().loveLevel < 0) {
@@ -149,15 +147,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         DropUser.getDropUser().energyLevel = 20
-
-        if (DropUser.getDropUser().energyLevel < MIN_ENERGY_LEVE)
-            droplingSprite.showSadState() // todo
-
-        else if (DropUser.getDropUser().loveLevel < MIN_LOVE_LEVEL)
-            droplingSprite.showSadState() // todo
-
-        else if (DropUser.getDropUser().hungerLevel < MIN_HUNGRY_LEVE)
-            droplingSprite.showSadState() // todo
+//
+//        if (userData.energyLevel < MIN_ENERGY_LEVE)
+//            droplingSprite.showSadState() // todo
+//
+//        else if (userData.loveLevel < MIN_LOVE_LEVEL)
+//            droplingSprite.showSadState() // todo
+//
+//        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
+//            droplingSprite.showSadState() // todo
 
         return false
         }
