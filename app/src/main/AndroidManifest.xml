@@ -11,15 +11,17 @@
         android:theme="@style/Theme.Drop">
         <activity android:name=".TimerActivity"></activity>
         <activity android:name=".GameOverActivity" />
-        <activity android:name=".WelcomePageActivity" />
-        <activity android:name=".ScheduleActivity" />
-        <activity android:name=".DropInitActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".WelcomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ScheduleActivity" />
+        <activity android:name=".DropInitActivity" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

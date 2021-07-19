@@ -242,26 +242,6 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineVer4"
         app:layout_constraintTop_toBottomOf="@id/progressBarHeart" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineHor4"
-        app:layout_constraintEnd_toEndOf="@+id/guidelineVer3"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVer3"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHor3"
-        app:srcCompat="@drawable/avatar_color1" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="115dp"
-        android:layout_height="125dp"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineHor6"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVer1"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVer3"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/want_heart" />
-
 
     <ImageView
         android:id="@+id/imageViewDropBody"

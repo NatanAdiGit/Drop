@@ -87,24 +87,6 @@ class DroplingSprite(activity: AppCompatActivity) {
     fun showTouchSadState() {
         Glide.with(parentActivity).load(R.drawable.sad_touch_body).into(imageViewDropBody)
         Glide.with(parentActivity).load(R.drawable.sad_touch_parts)
-            .listener(object : RequestListener<Drawable> {
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    showSadState()
-                    return true
-                }
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {return false}
-            })
             .into(imageViewDropFeatures)
     }
 

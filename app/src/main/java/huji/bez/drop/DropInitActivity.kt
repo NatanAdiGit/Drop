@@ -27,18 +27,25 @@ class DropInitActivity : AppCompatActivity() {
         val avatar: ImageView = findViewById(R.id.avatar)
         colorButton1.setOnClickListener {
             DropUser.setDropColor("#CCF1FF")
+            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color1))
         }
 
         colorButton2.setOnClickListener {
             DropUser.setDropColor("#E0D7FF")
+            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color2))
+
         }
 
         colorButton3.setOnClickListener {
             DropUser.setDropColor("#FFCCE1")
+            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color3))
+
         }
 
         colorButton4.setOnClickListener {
             DropUser.setDropColor("#FAFFC7")
+            avatar.setImageDrawable(getDrawable(R.drawable.avatar_color4))
+
         }
 
 

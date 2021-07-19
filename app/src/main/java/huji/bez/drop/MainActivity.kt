@@ -54,13 +54,16 @@ class MainActivity : AppCompatActivity() {
         loveProgBar.progress = DropUser.getDropUser().loveLevel
         hungryProgBar.progress = DropUser.getDropUser().hungerLevel
 
-        val icon: ImageView = findViewById(R.id.imageViewDropFeatures)
-        icon.visibility = View.GONE
 
-        if (savedInstanceState == null) {
-            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
-            startActivity(intent)
-        }
+//        if (savedInstanceState == null) {
+//            val intent = Intent(this@MainActivity, WelcomePageActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+
+        val dropNameTextView : TextView = findViewById(R.id.nameText)
+        dropNameTextView.setText(DropUser.getDropUser().dropName)
+        
 
         droplingSprite = DroplingSprite(this)
         droplingSprite.setBodyColor(Color.parseColor(DropUser.getDropUser().color))
@@ -68,8 +71,6 @@ class MainActivity : AppCompatActivity() {
 
         val handler = Handler()
         val delay: Long = 1000 // 1000 milliseconds == 1 second
-
-        val bubble: ImageView = findViewById(R.id.imageView5)
 
         startCountingTenMin = System.currentTimeMillis()
         handler.postDelayed(object : Runnable {
@@ -117,10 +118,10 @@ class MainActivity : AppCompatActivity() {
         var isScheduleIsBlockingNow = MainSchedule.getSchedule().isBlocking()
         if (isScheduleIsBlockingNow && isNotFocused) {
             Log.e("I_entered",(isScheduleIsBlockingNow && isNotFocused).toString())
-            userData.energyLevel -= 30
-            Log.e("ennnnnergy",userData.energyLevel.toString())
-            if (userData.energyLevel < 0) {
-                userData.energyLevel = 0
+            DropUser.getDropUser().energyLevel -= 70
+            Log.e("ennnnnergy",DropUser.getDropUser().energyLevel.toString())
+            if (DropUser.getDropUser().energyLevel < 0) {
+                DropUser.getDropUser().energyLevel = 0
             }
             DropUser.getDropUser().loveLevel -= 10
             if (DropUser.getDropUser().loveLevel < 0) {
@@ -138,24 +139,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (isScheduleIsBlockingNow && !isNotFocused) {
-            if (System.currentTimeMillis() - startCountingTenMin > 600000) {
-                DropUser.getDropUser().energyLevel += 5
-                DropUser.getDropUser().hungerLevel += 3
+            if (System.currentTimeMillis() - startCountingTenMin > 6000) {
+                DropUser.getDropUser().energyLevel += 1
+                DropUser.getDropUser().hungerLevel += 2
                 energyProgBar.progress = DropUser.getDropUser().energyLevel
                 hungryProgBar.progress = DropUser.getDropUser().hungerLevel
             }
         }
 
-        DropUser.getDropUser().energyLevel = 20
-//
-//        if (userData.energyLevel < MIN_ENERGY_LEVE)
-//            droplingSprite.showSadState() // todo
-//
-//        else if (userData.loveLevel < MIN_LOVE_LEVEL)
-//            droplingSprite.showSadState() // todo
-//
-//        else if (userData.hungerLevel < MIN_HUNGRY_LEVE)
-//            droplingSprite.showSadState() // todo
+        if(!isScheduleIsBlockingNow) {
+            if (System.currentTimeMillis() - startCountingTenMin > 3000) {
+                DropUser.getDropUser().energyLevel -= 2
+                DropUser.getDropUser().hungerLevel -= 3
+                energyProgBar.progress = DropUser.getDropUser().energyLevel
+                hungryProgBar.progress = DropUser.getDropUser().hungerLevel
+            }
+        }
+
+        if (DropUser.getDropUser().energyLevel < MIN_ENERGY_LEVE)
+            droplingSprite.showSadState() // todo
+
+        else if (DropUser.getDropUser().loveLevel < MIN_LOVE_LEVEL)
+            droplingSprite.showSadState() // todo
+
+        else if (DropUser.getDropUser().hungerLevel < MIN_HUNGRY_LEVE)
+            droplingSprite.showSadState() // todo
 
         return false
         }
